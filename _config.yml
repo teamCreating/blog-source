@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: Creating!
 subtitle: ''
 description: ''
 keywords:
@@ -112,6 +112,7 @@ feed:
   type: atom
   path: atom.xml
   limit: 20
+  icon: https://avatars.githubusercontent.com/u/183127731?s=200&v=4
   hub:
   content: true
   content_limit: 140
