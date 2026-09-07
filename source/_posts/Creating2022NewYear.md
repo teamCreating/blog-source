@@ -1,6 +1,7 @@
----
+﻿---
 title: 【活动记录】Creating2022新年活动
 date: 2022-02-17 20:43:12
+author: Creating工程组
 tags: activity
 cover: https://www.ghfast.top/https://raw.githubusercontent.com/CatalpaCute/image-hosting/main/CreatingBlog/newyear2022.jpg
 ---

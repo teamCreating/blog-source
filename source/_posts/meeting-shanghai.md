@@ -1,6 +1,7 @@
----
+﻿---
 title: 我服重要人物在上海会面
 date: 2024-08-19 20:56:07
+author: Creating工程组
 tags: meeting
 cover: https://www.ghfast.top/https://raw.githubusercontent.com/CatalpaCute/image-hosting/main/CreatingBlog/ben_and_cz_in_shanghai.jpg
 ---

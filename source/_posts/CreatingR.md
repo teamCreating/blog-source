@@ -1,6 +1,7 @@
----
+﻿---
 title: Creating资源包
 date: 2022-08-16 10:51:36
+author: Creating工程组
 tags: resources
 cover: https://www.ghfast.top/https://raw.githubusercontent.com/CatalpaCute/image-hosting/main/CreatingBlog/pack_icon.png
 ---

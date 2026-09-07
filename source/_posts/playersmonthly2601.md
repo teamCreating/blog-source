@@ -1,6 +1,7 @@
----
+﻿---
 title: 虹海玩家月度新闻 Creating Players' Monthly 2601
 date: 2026-02-01 21:44:22
+author: Creating工程组
 tags: [monthly,activity]
 cover: https://r2.czzzz.work/2026/02/4e00fbac33c42e464b0c2662939fb812_720.png
 ---

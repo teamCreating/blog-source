@@ -1,6 +1,7 @@
----
+﻿---
 title: 虹海全服公告
 date: 2024-08-29 16:09:58
+author: Creating工程组
 password: mima
 abstract: 这里有东西被加密了，需要输入密码查看哦。
 message: 您好，这里需要密码。

@@ -1,6 +1,7 @@
----
+﻿---
 title: 漫步滨海
 date: 2022-08-26 20:55:14
+author: Creating工程组
 tags: promotion
 cover: https://www.ghfast.top/https://raw.githubusercontent.com/CatalpaCute/image-hosting/main/CreatingBlog/B0E9A2.png
 ---

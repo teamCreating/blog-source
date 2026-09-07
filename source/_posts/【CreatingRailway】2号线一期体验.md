@@ -1,6 +1,7 @@
----
+﻿---
 title: 【CreatingRailway】2号线一期体验
 date: 2022-02-08 18:12:46
+author: Creating工程组
 tags: [railway,promotion]
 cover: https://www.ghfast.top/https://raw.githubusercontent.com/CatalpaCute/image-hosting/main/CreatingBlog/line2_experience.jpg
 ---

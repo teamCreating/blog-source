@@ -15,13 +15,11 @@ hexo.extend.filter.register(
           return match
         }
 
-        // Keep a real src for RSS readers and clients that do not execute
-        // the theme's lazyload script, while still exposing data-src for the
-        // existing frontend behavior.
         return `
         <span class="lazyload-img-span">
-        <img ${attrBegin} src="${src}" data-src="${src}"${attrEnd}>
-        </span>
+        <img ${attrBegin} 
+           data-src="${src}" >
+        </sapn>
       `
       }
     )
