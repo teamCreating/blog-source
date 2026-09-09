@@ -1,0 +1,44 @@
+<% var dl = page.dl || { challenges: [] }; %>
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp"><%= page.title %></div>
+      <div class="dl-card animate__animated  animate__fadeInUp">
+        <div class="dl-card-line">
+          <span class="dl-card-name"><%= dl.name || '客户端' %></span>
+          <% if (dl.version) { %><span class="dl-card-tag"><%= dl.version %></span><% } %>
+          <% if (dl.date) { %><span class="dl-card-meta"><%= dl.date %></span><% } %>
+          <% if (dl.size) { %><span class="dl-card-meta"><%= dl.size %></span><% } %>
+        </div>
+        <% if (dl.challenges && dl.challenges.length) { %>
+        <div class="dl-recover">
+          <button type="button" class="dl-recover-toggle" id="dl-recover-toggle">忘记密码？</button>
+          <form id="dl-recover-panel" class="dl-recover-panel" hidden>
+            <% if (dl.challenges.length === 1) { %>
+            <label class="dl-recover-q" for="dl-answer"><%= dl.challenges[0].question %></label>
+            <% } else { %>
+            <select id="dl-question" class="dl-recover-q">
+              <% dl.challenges.forEach(function (c, i) { %>
+              <option value="<%= i %>"><%= c.question %></option>
+              <% }) %>
+            </select>
+            <% } %>
+            <div class="dl-recover-row">
+              <input type="text" id="dl-answer" autocomplete="off" placeholder="输入答案">
+              <button type="submit">解锁</button>
+            </div>
+            <div class="dl-recover-msg" id="dl-recover-msg"></div>
+          </form>
+        </div>
+        <% } %>
+      </div>
+    </div>
+    <div class="post-content-main animate__animated  animate__fadeInUp">
+      <%- page.content %>
+    </div>
+  </div>
+</article>
+<% if (dl.challenges && dl.challenges.length) { %>
+<script id="dl-recover-data" type="application/json"><%- JSON.stringify(dl.challenges).replace(/</g, '\\u003c') %></script>
+<% } %>
+<%- js('js/downloads.js') %>
