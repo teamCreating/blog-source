@@ -1,0 +1,135 @@
+// 动效打磨层
+// 原则：只动 transform / opacity；沿用主题既有 .3s/.4s 过渡节奏与主题色变量；
+// 全部动效在 prefers-reduced-motion: reduce 下自动停用
+
+// ---------- 卡片（首页 / 归档 / NEWSROOM / 分类 / 标签）----------
+// 封面缩放限制在框内（修复原来 scale 溢出边框的问题）
+.img-show-post-cover
+    overflow hidden
+
+.img-show-post
+    .img-show-post-cover-class
+        transition transform .4s ease
+    // 悬停整卡即联动，而不只是悬停到图片本身
+    &:hover
+        .img-show-post-cover-class
+            transform scale(1.05)
+        .img-show-post-title
+            color $color-theme-main
+        // 日期上方的短线沿主题"下划线"母题展开
+        .img-show-post-date
+            &:after
+                left 35%
+                right 35%
+
+.img-show-post-title
+    transition color .4s
+
+// ---------- 归档列表行：悬停轻移 ----------
+.archive-post
+    transition transform .4s
+    &:hover
+        transform translateX(6px)
+
+// ---------- 分页按钮 / 页脚社交图标：悬停轻抬 ----------
+.paginator
+    .extend:hover
+        transform translateY(-2px)
+
+.footer-li:hover
+    transform translateY(-2px)
+
+// ---------- 移动端全屏菜单 / 分类下拉：展开时淡入 ----------
+// display:none 切换为 block 时 CSS 动画会重放
+@keyframes motion-fade-in
+    from
+        opacity 0
+    to
+        opacity 1
+
+@keyframes motion-drop-in
+    from
+        opacity 0
+        transform translateY(-6px)
+    to
+        opacity 1
+        transform translateY(0)
+
+#mobile-main
+    animation motion-fade-in .25s ease
+
+#sort
+    .categories-outer
+        animation motion-drop-in .2s ease
+
+// ---------- 下载页：按压反馈 ----------
+.dl-secret
+    .dl-btn:active
+        transform scale(.98)
+
+.dl-fp
+    .dl-copy:active
+        transform scale(.96)
+
+.dl-recover-row
+    button:active
+        transform scale(.97)
+
+// ---------- 返回顶部 ----------
+.back-top
+    position fixed
+    right 40px
+    bottom 40px
+    width 44px
+    height 44px
+    display flex
+    align-items center
+    justify-content center
+    border none
+    border-radius 100%
+    background-color $color-theme-secondary
+    color $color-theme-main
+    font-size 1.25em
+    cursor pointer
+    z-index 9998
+    opacity 0
+    transform translateY(10px)
+    pointer-events none
+    transition all .3s
+    box-shadow 0 2px 12px rgba(0, 0, 0, .08)
+    &:hover
+        background-color $color-theme-main
+        color #fff
+        transform translateY(-3px)
+
+.back-top-show
+    opacity 1
+    transform translateY(0)
+    pointer-events auto
+
+@media $mobile-m
+    .back-top
+        right 20px
+        bottom 20px
+        width 40px
+        height 40px
+
+// ---------- 平滑滚动 ----------
+// 锚点跳转（目录等）变平滑；系统设置减弱动效时保持瞬时
+@media (prefers-reduced-motion: no-preference)
+    html
+        scroll-behavior smooth
+
+// 跨页视图过渡（Chromium 渐进增强：页面导航柔和淡入，其他浏览器自动忽略）
+@view-transition {
+  navigation: auto;
+}
+
+// ---------- 无障碍护栏：系统开启"减弱动态效果"时停用一切动画 ----------
+@media (prefers-reduced-motion: reduce)
+    html
+        scroll-behavior auto
+    *
+        animation-duration .01ms !important
+        animation-iteration-count 1 !important
+        transition-duration .01ms !important
