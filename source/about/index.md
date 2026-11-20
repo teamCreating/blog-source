@@ -20,7 +20,24 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
 
 如您在Creating的游戏中有任何疑问或困难，您可以求助于管理员及其他玩家。Creating感谢您的对我们服务器的支持。
 
-<section class="team-members">
+<section class="about-cards">
+
+### GitHub
+
+<a id="teamcreating-github" class="team-member-card" href="https://github.com/teamCreating">
+  <span class="team-member-avatar" style="background-image: url('https://avatars.githubusercontent.com/u/183127731?s=128')" aria-hidden="true"></span>
+  <div class="team-member-copy">
+    <h3>the Creating Server</h3>
+    <span class="github-profile-handle">@teamCreating</span>
+    <p>A Minecraft server which started in 2020.</p>
+    <p class="github-profile-stats" hidden></p>
+  </div>
+  <span class="team-member-arrow" aria-hidden="true">→</span>
+</a>
+
+</section>
+
+<section class="team-members about-cards">
 
 ## 管理组成员
 
@@ -53,21 +70,21 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
 </section>
 
 <style>
-.post-content-inner .team-members {
+.post-content-inner .about-cards {
   --team-title-size: 1.65em;
   --team-card-gap: 16px;
   --team-accent: #1a98ff;
   margin-top: 48px;
 }
 
-.team-members h2 {
+.about-cards h2 {
   margin: 0 0 20px;
   padding-bottom: 8px;
   border-bottom: 1px solid #e3e3e3;
   font-size: var(--team-title-size);
 }
 
-.team-members h2::after {
+.about-cards h2::after {
   content: none;
 }
 
@@ -77,7 +94,7 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
   gap: var(--team-card-gap);
 }
 
-.team-members .team-member-card {
+.about-cards .team-member-card {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -90,13 +107,13 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
   transition: border-color .2s ease, box-shadow .2s ease;
 }
 
-.team-members a.team-member-card:is(:hover, :focus-visible) {
+.about-cards a.team-member-card:is(:hover, :focus-visible) {
   border-color: var(--team-accent);
   box-shadow: 0 4px 12px rgba(0, 0, 0, .08);
   text-decoration: none;
 }
 
-.team-members a.team-member-card:focus-visible {
+.about-cards a.team-member-card:focus-visible {
   outline: 2px solid var(--team-accent);
   outline-offset: 2px;
 }
@@ -118,7 +135,7 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
   overflow-wrap: anywhere;
 }
 
-.team-members .team-member-copy h3 {
+.about-cards .team-member-copy h3 {
   display: block;
   margin: 0;
   font-size: 1em;
@@ -127,7 +144,7 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
   box-shadow: none;
 }
 
-.team-members .team-member-copy p {
+.about-cards .team-member-copy p {
   margin: 4px 0 0;
   color: #595f6d;
   font-size: .88em;
@@ -138,9 +155,42 @@ Creating 于 2020 年 4 月 1 日开服，最初是一个基岩版生存服务�
   color: var(--team-accent);
 }
 
+.github-profile-handle {
+  color: #595f6d;
+  font-size: .85em;
+}
+
+.about-cards .github-profile-stats {
+  font-weight: 600;
+}
+
 @media (max-width: 680px) {
   .team-members-grid {
     grid-template-columns: 1fr;
   }
 }
 </style>
+
+<script>
+(async () => {
+  const card = document.getElementById('teamcreating-github');
+  const stats = card.querySelector('.github-profile-stats');
+
+  try {
+    const response = await fetch('https://api.github.com/orgs/teamCreating');
+    if (!response.ok) return;
+
+    const { public_repos, followers } = await response.json();
+    const counts = [];
+    if (Number.isInteger(public_repos)) counts.push(`${public_repos} 个公开仓库`);
+    if (Number.isInteger(followers)) counts.push(`${followers} 位关注者`);
+
+    if (counts.length) {
+      stats.textContent = counts.join(' · ');
+      stats.hidden = false;
+    }
+  } catch {
+    // Keep the profile and its link usable when GitHub is unavailable.
+  }
+})();
+</script>
